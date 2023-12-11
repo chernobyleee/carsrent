@@ -12,8 +12,8 @@
                 <form class="review" method="post" action="<?= base_url('cars/inputreview'); ?>">
 
                     <!-- nanti langsung ubah jadi username -->
-                    <label class="form-label">Username: sementara isi pake id_user</label><br>
-                    <input type="text" class="form-control" name="nama" id="nama">
+                    <label class="form-label">Username: </label><br>
+                    <input type="text" class="form-control" name="nama" value="<?= $this->session->userdata('username')?>" readonly>
                     <label class="form-label">Model Mobil:</label>
                     <input type="text" class="form-control" name="mobil_modal" id="modalMobilInput" readonly>
                     <input type="hidden" class="form-control" name="id_modal" id="modalidInput">

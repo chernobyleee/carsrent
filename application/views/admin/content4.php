@@ -21,19 +21,20 @@
         </tr>
     </thead>
     <tbody>
-        <?php
-        for ($i = 1; $i < 10; $i++) {
+        <?php //$i = 1; $i < 10; $i++
+        $i = 1;
+        foreach ($cars as $c) {
         ?>
             <tr>
-                <th scope="row"><?= $i ?></th>
-                <td>Odong odong</td>
-                <td>manual</td>
-                <td>2500</td>
-                <td>loreng</td>
-                <td>200</td>
-                <td>Rp.5 BTC</td>
+                <th scope="row"><?= $i++ ?></th>
+                <td><?= $c->nama ?></td>
+                <td><?= $c->transmisi ?></td>
+                <td><?= $c->tahun ?></td>
+                <td><?= $c->warna ?></td>
+                <td><?= $c->kursi ?></td>
+                <td>Rp. <?= number_format($c->harga) ?></td>
                 <td>
-                    <img src="img/cars/creta.png" alt="" class="img-fluid img-thumbnail" style="width: 100px;">
+                    <img src="<?= base_url('assets/img/cars/') . $c->gambar; ?>" alt="" class="img-fluid img-thumbnail" style="width: 100px;">
                 </td>
                 <td>
                     <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Kamu yakin akan menghapus ?')">

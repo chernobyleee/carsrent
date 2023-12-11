@@ -57,13 +57,11 @@ class Autentifikasi extends CI_Controller
             if (password_verify($password, $user['password'])) {
                 $data = [
                     'username' => $user['username'],
-                    'role' => $user['role'],
-                    'nama' =>$user['nama'],
-                    'gambar' => $user['gambar'],
+                    
                 ];
                 $this->session->set_userdata($data);
                 if ($user['role'] == 1) {
-                    redirect('user/admin');
+                    redirect('admin');
                 } else {
 
                     redirect('home/index');

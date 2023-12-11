@@ -3,7 +3,8 @@ class Contact extends CI_Controller {
     /// contact bisa diakses oleh guest dan user
     public function index(){
         if ($this->session->userdata('username')) {
-            $this->load->view('templates/login_header');
+            $user['user'] = $this->ModelUser->cekData(['username' => $this->session->userdata('username')])->row_array();
+            $this->load->view('templates/login_header',$user);
         } else {
             $this->load->view('templates/header');
         }
@@ -11,8 +12,6 @@ class Contact extends CI_Controller {
         $this->load->view('templates/footer');
     }
     public function inputcontact() {
-        
-        $this->load->database();
 
         $nama = $this->input->post('nama') ? $this->input->post('nama') : null;
         $email = $this->input->post('email') ? $this->input->post('email') : null;

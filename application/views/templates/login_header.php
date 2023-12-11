@@ -65,7 +65,7 @@
                             <ul class="navbar-nav">
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
-                                        <span class=" d-none d-lg-inline">username</span>
+                                        <span class=" d-none d-lg-inline"><?= $user['username'] ?></span>
                                         <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profil/defaults.png') ?>" style="width: 30px;">
                                     </a>
 

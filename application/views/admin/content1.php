@@ -14,35 +14,43 @@
                         <th scope="col-4">No</th>
                         <th scope="col-4">Username</th>
                         <th scope="col-4">Mobil</th>
-                        <th scope="col-4">bintang</th>
-                        <th scope="col-4">pesan review</th>
-                        <th scope="col-4">keterangan</th>
+                        <th scope="col-4">Bintang</th>
+                        <th scope="col-4">Review</th>
+                        <th scope="col-4">Accept</th>
+                        <th scope="col-4">Delete</th>
                     </tr>
                 </thead>
 
                 <tbody>
                     <?php
 
-                    $data = ["asep", "kijang", 5, "keren bangettt"];
-                    for ($i = 1; $i <= 10; $i++) {
-
+                    foreach($review as $r){
                     ?>
                         <tr>
-                            <th scope="row"><?= $i ?></th>
-                            <td scope="row"><?= $data[0] ?></td>
-                            <td scope="row"><?= $data[1] ?></td>
-                            <td scope="row"><img src="img/star<?= $data[2] ?>.png" alt="" style="width: 60px;"></td>
-                            <td scope="row"><?= $data[3] ?></td>
-                            <td scope="row">
+                            <th scope="row"><?= $r['id_review'] ?></th>
+                            <td scope="row"><?= $r['username'] ?></td>
+                            <td scope="row"><?= $r['nama'] ?></td>
+                            <td scope="row"><img src="<?= base_url('assets/img/star/star'). $r['rating']; ?>.png" alt="" style="width: 60px;"></td>
+                            <td scope="row"><?= $r['massage'] ?></td>
                                 <div class="gap-2">
                                     <!-- acc review -->
-                                    <button type="button" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
+                                    <td>
+                                    <form class="review" method="post" action="<?= base_url('admin/accreview'); ?>">
+                                    <input type="hidden" class="form-control" name="status" value="<?= $r['id_review'] ?>">
+                                    <button type="submit" value="submit" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         <i class="bi bi-check-circle-fill"></i>
                                     </button>
+                                    </form>
+                    </td>
                                     <!-- delete review -->
-                                    <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Kamu yakin akan menghapus ?')">
+                                    <td>
+                                    <form class="review" method="post" action="<?= base_url('admin/delreview'); ?>">
+                                    <input type="hidden" class="form-control" name="status" value="<?= $r['id_review'] ?>">
+                                    <button type="submit" value="submit" class="btn btn-danger btn-sm" onclick="return confirm('Kamu yakin akan menghapus ?')">
                                         <i class="bi bi-trash"></i>
                                     </button>
+                                    </form>
+                    </td>
                                 </div>
                             </td>
                         </tr>

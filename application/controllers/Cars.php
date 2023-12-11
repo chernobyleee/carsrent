@@ -13,9 +13,10 @@ class Cars extends CI_Controller
     public function index()
     {
         if ($this->session->userdata('username')) {
+            $user['user'] = $this->ModelUser->cekData(['username' => $this->session->userdata('username')])->row_array();
             $data['cars'] = $this->ModelCars->getcars();
             $data['tipe'] = $this->ModelCars->getTipe();
-            $this->load->view('templates/login_header');
+            $this->load->view('templates/login_header', $user);
             $this->load->view('cars/index', $data);
             $this->load->view('cars/modallogin');
             $this->load->view('templates/footer');

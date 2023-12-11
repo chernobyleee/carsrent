@@ -38,5 +38,40 @@ class ModelUser extends CI_Model
 
             $query = $this->db->get();
             return $query->result_array();
-}
+    }
+    /// yg dibawah untuk admin, bingung taro dimana
+    public function getTotalUser()
+    {
+        $this->db->select('COUNT(*) as total');
+        $this->db->from('user');
+
+        $query = $this->db->get();
+        return $query->row()->total;
+    }
+    public function getTotalcars()
+    {
+        $this->db->select('COUNT(*) as total');
+        $this->db->from('mobil');
+
+        $query = $this->db->get();
+        return $query->row()->total;
+    }
+
+    public function getTotalReview()
+    {
+        $this->db->select('COUNT(*) as total');
+        $this->db->from('review');
+
+        $query = $this->db->get();
+        return $query->row()->total;
+    }
+    public function getTotalContact()
+    {
+        $this->db->select('COUNT(*) as total');
+        $this->db->from('contact');
+
+        $query = $this->db->get();
+        return $query->row()->total;
+    }
+    
 }

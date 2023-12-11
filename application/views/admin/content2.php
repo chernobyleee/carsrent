@@ -21,23 +21,21 @@
                 </thead>
 
                 <tbody>
-                    <?php
-
-                    $data = ["asep", "admin1@gmail.com", "admin", "keren bangettt"];
-                    for ($i = 1; $i <= 10; $i++) {
-
-                    ?>
-                        <tr id="row<?= $i ?>" class="text-center">
+                <?php //$i = 1; $i < 10; $i++
+                    $i = 0;
+                    foreach ($message as $c) {
+                        ?>
+                        <tr id="row<?= $i++ ?>" class="text-center">
                             <td scope="row" class="w-5"><?= $i ?></td>
-                            <td scope="row"><?= $data[0] ?></td>
-                            <td scope="row"><?= $data[1] ?></td>
-                            <td scope="row"><?= $data[2] ?></td>
+                            <td scope="row"><?= $c->nama ?></td>
+                            <td scope="row"><?= $c->email ?></td>
+                            <td scope="row"><?= $c->subject ?></td>
                             <td scope="row">
 
                                 <div>
                                     <!-- Isi teks panjang di sini -->
                                     <p class="text-panjang" id="myText">
-                                        Lorem, ipsum.
+                                        <?= $c->message ?>
                                     </p>
                                     <a href="#" id="linkMassage<?= $i ?>" onclick="return confirm('tulis semua tulisan massage')" disabled>Lihat Selengkapnya</a>
                                     <!-- Link Lihat Selengkapnya -->
