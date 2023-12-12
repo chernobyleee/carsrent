@@ -65,5 +65,15 @@ class ModelCars extends CI_Model
         $this->db->update("review", array('is_active' => 1));
         
     }
+
+    public function getallratings(){
+        $this->db->select('mobil.id ,mobil.nama,review.id,review.rating,review.is_active');
+        $this->db->from('review');
+        $this->db->join('mobil','mobil.id = review.id');
+        $this->db->order_by('mobil.id','asc');
+
+        $query = $this -> db -> get();
+        return $query->result_array();
+    }
 }
 ?>

@@ -12,10 +12,14 @@ class Cars extends CI_Controller
 
     public function index()
     {
+
+        
+
         if ($this->session->userdata('username')) {
             $user['user'] = $this->ModelUser->cekData(['username' => $this->session->userdata('username')])->row_array();
             $data['cars'] = $this->ModelCars->getcars();
             $data['tipe'] = $this->ModelCars->getTipe();
+            $data['ratings'] = $this->ModelCars->getallratings();
             $this->load->view('templates/login_header', $user);
             $this->load->view('cars/index', $data);
             $this->load->view('cars/modallogin');
@@ -23,6 +27,7 @@ class Cars extends CI_Controller
         } else {
             $data['cars'] = $this->ModelCars->getcars();
             $data['tipe'] = $this->ModelCars->getTipe();
+            $data['ratings'] = $this->ModelCars->getallratings();
             $this->load->view('templates/header');
             $this->load->view('cars/index', $data);
             $this->load->view('cars/modalnotlogin');

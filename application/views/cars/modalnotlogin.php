@@ -12,11 +12,11 @@
                 <div class="container-fluid">
                     <div class="row">
                         <div class="col-md-12">
-                            <div class="badge bg-danger text-wrap ">
-                                <div class="align-center">
-                                    <h2><strong>Fitur tidak bisa diakses!</strong></h2>
-                                    <h5>silahkan login terlebih dahulu</h5>
-                                </div>
+                            <div class="alert alert-danger" role="alert" class = "text-center">
+                                <h2 class="text-center">
+                                    Fitur tidak bisa diakses! 
+                                </h2>
+                                <p class="fw-bold text-center">silahkan login</p>
                             </div>
                         </div>
                     </div>
