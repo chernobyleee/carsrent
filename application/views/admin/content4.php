@@ -37,9 +37,12 @@
                     <img src="<?= base_url('assets/img/cars/') . $c->gambar; ?>" alt="" class="img-fluid img-thumbnail" style="width: 100px;">
                 </td>
                 <td>
-                    <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Kamu yakin akan menghapus ?')">
+                    <form action="admin/delMobil" method="post">
+                    <input type="hidden" name="id_mobil" id="id_mobil" value="<?= $c->id ?>" readonly> 
+                    <button type="submit" value="submit" class="btn btn-danger btn-sm" onclick="return confirm('Kamu yakin akan menghapus ?')">
                         <i class="bi bi-trash"></i>
                     </button>
+                    </form>
                 </td>
             </tr>
         <?php } ?>

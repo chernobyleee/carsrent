@@ -52,7 +52,7 @@
 <section id="testimonial">
     <div class="container" data-aos="fade-up" data-aos-duration="1000">
         <div class="section-title">
-            <h2>Review user</h2>
+            <h2>Review Terkini</h2>
             <p>Review tentang CarsRent kami adalah bukti nyata kepuasan pelanggan kami. Pelanggan kami telah
                 mengalami pengalaman yang luar biasa dengan layanan kami</p>
         </div>

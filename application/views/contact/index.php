@@ -57,19 +57,19 @@
                         <form class="form" method="post" action="<?= base_url('contact/inputcontact'); ?>">
                             <div class="col-10">
                                 <label class="form-label">Your Name :</label>
-                                <input type="text" class="form-control" name="nama" id="nama">
+                                <input type="text" class="form-control" name="nama" id="nama" required>
                             </div>
                             <div class="col-10">
                                 <label class="form-label">Your Email :</label>
-                                <input type="email" class="form-control" name="email" id="email">
+                                <input type="email" class="form-control" name="email" id="email" required>
                             </div>
                             <div class="col-10">
                                 <label class="form-label">Subject :</label>
-                                <input type="text" class="form-control" name="subject" id="nama">
+                                <input type="text" class="form-control" name="subject" id="nama" required>
                             </div>
                             <div class="col-10">
                                 <label class="form-label">Message :</label>
-                                <textarea rows="5" class="form-control" name="message" id="nama"></textarea>
+                                <textarea rows="5" class="form-control" name="message" id="nama" required></textarea>
                             </div>
                             <div class="col-10 d-flex justify-content-center">
                                 <button type="submit" class="form-control" id="form-submit">Send Message</button>

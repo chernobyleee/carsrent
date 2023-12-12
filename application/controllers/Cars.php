@@ -12,12 +12,10 @@ class Cars extends CI_Controller
 
     public function index()
     {
-
-        
-
         if ($this->session->userdata('username')) {
-            $user['user'] = $this->ModelUser->cekData(['username' => $this->session->userdata('username')])->row_array();
-            $data['cars'] = $this->ModelCars->getcars();
+            $user = $this->ModelUser->cekData(['username' => $this->session->userdata('username')])->row_array();
+            $user['user'] = $user;
+            $data['cars'] = $this->ModelCars->getcars('tipe.id_tipe');
             $data['tipe'] = $this->ModelCars->getTipe();
             $data['ratings'] = $this->ModelCars->getallratings();
             $this->load->view('templates/login_header', $user);
@@ -25,7 +23,7 @@ class Cars extends CI_Controller
             $this->load->view('cars/modallogin');
             $this->load->view('templates/footer');
         } else {
-            $data['cars'] = $this->ModelCars->getcars();
+            $data['cars'] = $this->ModelCars->getcars('tipe.id_tipe');
             $data['tipe'] = $this->ModelCars->getTipe();
             $data['ratings'] = $this->ModelCars->getallratings();
             $this->load->view('templates/header');
@@ -42,8 +40,8 @@ class Cars extends CI_Controller
         
         $id_user = $this->ModelUser->getinfo();
         $id_mobil = $this->input->post('id_modal') ? $this->input->post('id_modal') : null;
-        $review = $this->input->post('review') ? $this->input->post('review') : null;
-        $rating = $this->input->post('rating') ? $this->input->post('rating') : null;
+        $review = $this->input->post('review') ? $this->input->post('review') : '        ';
+        $rating = $this->input->post('rating') ? $this->input->post('rating') : 0;
 
         $data = array(
             'id_user' => $id_user[0]['id_user'],
@@ -53,7 +51,8 @@ class Cars extends CI_Controller
         );
 
         $this->db->insert('review', $data);
-        redirect('review');
+        
+        redirect('cars');
     }
     public function hapusreview() /// buat admin dan user
     {
@@ -64,29 +63,7 @@ class Cars extends CI_Controller
 
 
     ////////// buat admin, mungkin nanti bakal dipindah ////////////
-    public function hapusmobil()
-    {
-        $id_review = $this->input->post('id_review');
-
-
-    }
-    public function tambahmobil()
-    {
-        $id_user = $this->input->post('nama') ? $this->input->post('nama') : null;
-        $id_mobil = $this->input->post('id_modal') ? $this->input->post('id_modal') : null;
-        $review = $this->input->post('review') ? $this->input->post('review') : null;
-        $rating = $this->input->post('rating') ? $this->input->post('rating') : null;
-
-        $data = array(
-            'id_user' => $id_user,
-            'id' => $id_mobil,
-            'rating' => $rating,
-            'massage' => $review
-        );
-
-        $this->db->insert('review', $data);
-        redirect('review');
-    }
+    
 }
 
 

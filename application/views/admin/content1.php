@@ -35,11 +35,13 @@
                                 <div class="gap-2">
                                     <!-- acc review -->
                                     <td>
+                                    <?php if ($r['is_active'] == 0) { ?>
                                     <form class="review" method="post" action="<?= base_url('admin/accreview'); ?>">
                                     <input type="hidden" class="form-control" name="status" value="<?= $r['id_review'] ?>">
                                     <button type="submit" value="submit" class="btn btn-success btn-sm" data-bs-toggle="modal" data-bs-target="#exampleModal">
                                         <i class="bi bi-check-circle-fill"></i>
                                     </button>
+                                    <?php } ?>
                                     </form>
                     </td>
                                     <!-- delete review -->

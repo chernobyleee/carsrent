@@ -2,13 +2,13 @@
 
 <div class="height-100 bg-light">
     <div class="container-fluid mt-5">
-    <?php foreach($user as $user){ ?>
+
         <div class="row mt-5" id="dashboard">
             <div class="col-lg-12">
                 <div class="card mb-3 text-white mt-5" style="background-color: #527853;">
                     <div class="row no-gutters">
                         <div class="col-md-4">
-                            <img src="<?= base_url('assets/img/profil/defaults.png')?>" class="card-img img-fluid ms-5" alt="..." style="width: 400px;">
+                            <img src="<?= base_url('assets/img/profil/'.$user['gambar'])?>" class="card-img rounded-circle img-fluid ms-5" alt="..." style="object-fit: cover; margin: 25px; width: 200px; height: 200px;">
                         </div>
                         <div class="col-md-6">
                             <div class="card-body ">
@@ -16,14 +16,14 @@
                                     <h1 class="fs-1 mt-5 fw-bold"><?= $user['username']; ?></h1>
 
                                 </div>
-                                <p class="card-text fs-5"><?= $user['nama']; ?></p>
+                                <p class="card-text fs-5">Nama : <?= $user['nama']; ?></p>
                             </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    <?php } ?>
+
 
         <!-- begin row -->
         <div class="mt-5 text-center">

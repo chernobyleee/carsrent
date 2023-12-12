@@ -18,7 +18,7 @@ class ModelUser extends CI_Model
             $this->db->order_by('id_review','desc');    
         
             $query = $this->db->get();
-            return $query->result_array();
+            return $query->result();
     }
     public function getTotal() {
         $user = $this->session->userdata('username');

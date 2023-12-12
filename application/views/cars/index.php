@@ -12,21 +12,18 @@ function hitungRataRata($nilai)
 }
 function maxId($data)
 {
+    $maxId = PHP_INT_MIN;
     foreach ($data as $item) {
-        $maxId = PHP_INT_MIN;
         $id = intval($item->id);
-        if ($id > $maxId) {
-            $maxId = $id;
-        }
+        $maxId = max($maxId, $id);
     }
-    
     return $maxId;
 }
 function gettAllDataRating($mobil, $nilai)
 {
     $ratingById = array();
-    for ($i = 1; $i <= maxId($mobil); $i++) {
-        $ratingById[$i] = array();
+    foreach ($mobil as $item) {
+        $ratingById[$item->id] = array();
     }
     foreach ($nilai as $item) {
         $id = intval($item["id"]);
@@ -38,30 +35,29 @@ function gettAllDataRating($mobil, $nilai)
 function averagerating($idmobil, $datarating)
 {
     $allRating = $datarating[$idmobil];
-    // var_dump($allRating);
     if (count($allRating) == 0) {
         $default = 0;
-        return [$default,0];
+        return [$default, 0];
     } else {
         $Ratingsementara = array();
         $Isactivesementara = array();
         $fixrating = array();
         foreach ($allRating as $index => $review) {
-            if($index % 2 == 0){
-                array_push($Ratingsementara,$review) ;
-            }else{
-                array_push($Isactivesementara,$review) ;
-            }
+            if ($index % 2 == 0) {
+                array_push($Ratingsementara, $review);
+            } else {
+                array_push($Isactivesementara, $review);
             }
         }
-        for($i = 0 ;$i < count($Ratingsementara);$i++){
-            if($Isactivesementara[$i] == 1 ){
-                array_push($fixrating,$Ratingsementara[$i]) ;
+        for ($i = 0; $i < count($Ratingsementara); $i++) {
+            if ($Isactivesementara[$i] == 1) {
+                array_push($fixrating, $Ratingsementara[$i]);
             }
         }
         $rataRata = hitungRataRata($fixrating);
-        return [$rataRata,count($fixrating)];
+        return [$rataRata, count($fixrating)];
     }
+}
 
 $data = gettAllDataRating($cars, $ratings);
 ?>
