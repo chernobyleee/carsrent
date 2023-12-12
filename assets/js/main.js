@@ -33,3 +33,25 @@ buttonFilterGroup.forEach((button) => {
   })
 });
 
+console.log("hello");
+
+function countWords() {
+  // Mendapatkan nilai teks dari textarea
+  let text = document.getElementById('textInput').value;
+
+  // Menghitung jumlah kata
+  let wordCount = text.split(/\s+/).filter(word => word.length > 0).length;
+
+  // Mendapatkan elemen pesan dan tombol submit
+  let wordCountMessage = document.getElementById('wordCountMessage');
+  let submitButton = document.querySelector('button[type="submit"]');
+
+  let maxWords = 2; // Ganti dengan jumlah kata yang diinginkan
+  if (wordCount > maxWords) {
+      wordCountMessage.textContent = `Harus berisi 2 kata`;
+      submitButton.disabled = true;
+  } else {
+      wordCountMessage.textContent = ``;
+      submitButton.disabled = false;
+  }
+}
