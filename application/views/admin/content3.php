@@ -12,25 +12,25 @@
     </div>
     <div class="row align-items-center">
         <div class="col-12">
-            <form>
+        <form action="admin/tambahmobil" method='post' enctype="multipart/form-data">
                 <div class="mb-3">
                     <label class="form-label">Nama mobil</label>
-                    <input type="text" class="form-control" placeholder="Masukan Nama Mobil" required>
+                    <input type="text" name="nama" class="form-control" placeholder="Masukan Nama Mobil" required>
                 </div>
                 <div class="mb-3">
                         <label class="form-label">Tipe mobil</label>
-                        <select class="form-control" id="tipe" required>
-                            <option disabled selected>Pilih tipe mobil</option>
-                            <option>tipe1</option>
-                            <option>tipe2</option>
-                            <option>tipe3</option>
-                            <option>tipe4</option>
-                            <option>tipe5</option>
+                        <select class="form-control" id="tipe" name="id_tipe" required>
+                        <option value="">Pilih Model</option>
+                        <?php foreach ($tipe as $m) { ?>
+                            <option value="<?= $m->id_tipe; ?>">
+                            <?= $m->tipe; ?>
+                            </option>
+                        <?php } ?>
                         </select>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Transmisi mobil</label>
-                        <select class="form-control" id="transimis" required>
+                        <select class="form-control" id="transimis" name="transmisi" required>
                             <option disabled selected>Pilih transmisi mobil</option>
                             <option>Automatic</option>
                             <option>Manual</option>
@@ -38,7 +38,7 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Tahun</label>
-                        <select class="form-control" id="transimis" required>
+                        <select class="form-control" id="transimis" name="tahun" required>
                             <option disabled selected>tahun</option>
                             <?php
                             $currentYear = date("Y");
@@ -51,19 +51,19 @@
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Warna</label>
-                        <input type="text" class="form-control" placeholder="Masukan Warna" required>
+                        <input type="text" class="form-control" name="warna" placeholder="Masukan Warna" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Kursi</label>
-                        <input type="number" class="form-control" placeholder="Masukan kursi" required>
+                        <input type="number" class="form-control" name="kursi" placeholder="Masukan kursi" required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Harga</label>
-                        <input type="number" class="form-control" placeholder="Rp." value="Rp." required>
+                        <input type="number" class="form-control" name="harga" placeholder="Rp." required>
                     </div>
                     <div class="mb-3">
                         <label class="form-label">Upload gambar mobil</label>
-                        <input class="form-control" type="file" id="uploadGambarMobil" required>
+                        <input class="form-control" type="file" id="uploadGambarMobil" name="gambar">
                     </div>
                     <div class="mb-3">
                         <div class="d-grid gap-2">

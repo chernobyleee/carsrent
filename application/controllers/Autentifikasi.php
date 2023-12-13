@@ -42,7 +42,15 @@ class Autentifikasi extends CI_Controller
         if ($this->session->userdata('username')) {
             redirect('home/index');
         }
+        else{
         $this->load->view('autentifikasi/registrasi');
+        $this->form_validation->set_rules('username', 'Username',
+            'required|trim|is_unique[user.username]', [
+                'required' => 'Username Belum diisi!!',
+                'is_unique' => 'Username Sudah Terdaftar!'
+            ]);
+        }
+        
     }
     // ini sementara langsung ke form login password_hash('password', PASSWORD_DEFAULT)
     private function _login()
@@ -88,23 +96,36 @@ terdaftar!!</div>');
 
 
     public function inputRegister()
-    {
-        $nama = $this->input->post('nama') ? $this->input->post('nama') : null;
-        $username = $this->input->post('username') ? $this->input->post('username') : null;
-        $email = $this->input->post('email') ? $this->input->post('email') : null;
-        $password = password_hash($this->input->post('password') , PASSWORD_DEFAULT) ? password_hash($this->input->post('password'), PASSWORD_DEFAULT) : null;
-        $nohp = $this->input->post('nohp') ? $this->input->post('nohp') : null;
+    {   
+        $this->load->view('autentifikasi/registrasi');
+        $this->form_validation->set_rules('username', 'Username',
+            'required|trim|is_unique[user.username]', [
+                'required' => 'Username Belum diisi!!',
+                'is_unique' => 'Username Sudah Terdaftar!'
+            ]);
+        if ($this->form_validation->run() == true) {
+            $nama = $this->input->post('nama') ? $this->input->post('nama') : null;
+            $username = $this->input->post('username') ? $this->input->post('username') : null;
+            $email = $this->input->post('email') ? $this->input->post('email') : null;
+            $password = password_hash($this->input->post('password') , PASSWORD_DEFAULT) ? password_hash($this->input->post('password'), PASSWORD_DEFAULT) : null;
+            $nohp = $this->input->post('nohp') ? $this->input->post('nohp') : null;
 
-        $data = array(
-            'nama' => $nama,
-            'username' => $username,
-            'email' => $email,
-            'password' => $password,
-            'nohp' => $nohp
-        );
+            $data = array(
+                'nama' => $nama,
+                'username' => $username,
+                'email' => $email,
+                'password' => $password,
+                'nohp' => $nohp
+            );
 
-        $this->db->insert('user', $data);
-        redirect('autentifikasi');
+            $this->db->insert('user', $data);
+            redirect('autentifikasi');
+        }else{
+            $this->session->set_flashdata('pesan', '<div 
+                class="alert alert-danger alert-message" role="alert">Username 
+                sudah digunakan</div>');
+                redirect('autentifikasi/register');
+        }
     }
     public function logout()
     {

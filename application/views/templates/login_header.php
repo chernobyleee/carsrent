@@ -66,21 +66,29 @@
                                 <li class="nav-item dropdown">
                                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
                                         <span class=" d-none d-lg-inline"><?= $user['username'] ?></span>
-                                        <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profil/defaults.png') ?>" style="width: 30px;">
+                                        <img class="img-profile rounded-circle" src="<?= base_url('assets/img/profil/'.$user['gambar']) ?>" style="object-fit: cover; margin-left: 5px; width: 30px; height: 30px;">
                                     </a>
 
                                     <ul class="dropdown-menu dropdown-menu-right shadow animated--grow-in mt-3">
                                         <li>
-                                            <a class="dropdown-item text-gray small " href = <?= base_url('home') ?>> Home
+                                            <a class="dropdown-item text-gray small " href="<?= base_url('home') ?>">Home
                                                 <i class="bi bi-house-door-fill text-gray"></i>
                                             </a>
                                         </li>
                                         <div class="dropdown-divider"></div>
                                         <li>
-                                            <a class="dropdown-item text-gray small " href="<?= base_url('profil')?>">My profile
+                                            <a class="dropdown-item text-gray small " href="<?= base_url('profil') ?>">My profile
                                                 <i class="bi bi-person-fill text-gray"></i>
                                             </a>
                                         </li>
+                                        <?php if ($user['role'] == 1) {?>
+                                        <div class="dropdown-divider"></div>
+                                        <li>
+                                            <a class="dropdown-item text-gray small " href="<?= base_url('admin') ?>">Admin page
+                                                <i class="bi bi-person-fill text-gray"></i>
+                                            </a>
+                                        </li>
+                                        <?php } ?>
                                         <div class="dropdown-divider"></div>
                                         <li>
                                             <a class="dropdown-item text-gray small " href="<?= base_url('autentifikasi/logout') ?>">Logout
@@ -100,5 +108,11 @@
             // Set the value of the hidden input in the modal form
             document.getElementById('modalMobilInput').value = mobilModal;
             document.getElementById('modalidInput').value = id_modal;
+        }
+        function prepareEditReview(reviewmodal, carsmodal, reviewmodal1)
+        {
+            document.getElementById('reviewmodal').value = reviewmodal;
+            document.getElementById('carsmodal').value = carsmodal;
+            document.getElementById('reviewmodal1').value = reviewmodal1;
         }
     </script>

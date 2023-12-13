@@ -21,11 +21,12 @@
                 </thead>
 
                 <tbody>
-                <?php //$i = 1; $i < 10; $i++
+                <?php 
                     $i = 0;
                     foreach ($message as $c) {
+                        $i++
                         ?>
-                        <tr id="row<?= $i++ ?>" class="text-center">
+                        <tr id="row<?= $i ?>" class="text-center">
                             <td scope="row" class="w-5"><?= $i ?></td>
                             <td scope="row"><?= $c->nama ?></td>
                             <td scope="row"><?= $c->email ?></td>
@@ -37,7 +38,7 @@
                                     <p class="text-panjang" id="myText">
                                         <?= $c->message ?>
                                     </p>
-                                    <a href="#" id="linkMassage<?= $i ?>" onclick="return confirm('tulis semua tulisan massage')" disabled>Lihat Selengkapnya</a>
+                                    <a href="#" id="linkMassage<?= $i ?>" onclick="return confirm('<?= $c->message ?>')" disabled>Lihat Selengkapnya</a>
                                     <!-- Link Lihat Selengkapnya -->
                                 </div>
 
@@ -49,9 +50,12 @@
                                             <input class="form-check-input " type="checkbox" value="" id="flexCheckDefault<?= $i ?>" onchange="ubahWarna(<?= $i ?>)">
                                             sudah dibaca
                                         </label>
-                                        <button type="button" class="btn btn-danger btn-sm" id="btnDeleteMassage<?= $i ?>" disabled>
+                                        <form action="admin/delContact" method="post">
+                                        <input type="hidden" name="id_contact" id="id_contact" value="<?= $c->id_contact ?>" readonly>                                        
+                                        <button type="submit" value="submit" class="btn btn-danger btn-sm" id="btnDeleteMassage<?= $i ?>" disabled>
                                             <i class="bi bi-trash"></i>Hapus massage
                                         </button>
+                                        </form>
                                     </div>
                                 </div>
                             </td>

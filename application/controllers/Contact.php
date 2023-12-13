@@ -3,8 +3,9 @@ class Contact extends CI_Controller {
     /// contact bisa diakses oleh guest dan user
     public function index(){
         if ($this->session->userdata('username')) {
-            $user['user'] = $this->ModelUser->cekData(['username' => $this->session->userdata('username')])->row_array();
-            $this->load->view('templates/login_header',$user);
+            $user = $this->ModelUser->cekData(['username' => $this->session->userdata('username')])->row_array();
+            $user['user'] = $user;
+            $this->load->view('templates/login_header', $user);
         } else {
             $this->load->view('templates/header');
         }
