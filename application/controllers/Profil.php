@@ -100,5 +100,4 @@ public function EditReview()
     
 }
 ?>
-Lorem ipsum dolor sit, amet consectetur adipisicing elit. Quibusdam impedit dolor, rerum asperiores nemo, 
-doloribus voluptatum mollitia esse officia sed quidem excepturi illum.
+

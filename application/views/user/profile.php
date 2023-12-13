@@ -1,12 +1,15 @@
 <!-- halaman profil -->
 
-<div class="container mt-5">
+
+
+
+<div class="container">
     <div class="container-fluid">
-        <div class="row">
+        <div class="row ">
             <?php
             foreach ($user as $user) { ?>
-                <div class="col-lg-6 justify-content-x">
-                    <div class="card card border-left-primary shadow h-100 py-2 " style="max-width: 600px;">
+                <div class="col-lg-6 justify-content-x mt-5 mb-4">
+                    <div class="card card border-left-primary shadow h-100 py-2 mt-5" style="max-width: 600px;">
                         <div class="row no-gutters">
                             <div class="col-md-4">
                                 <img src="<?= base_url('assets/img/profil/' . $user['gambar']) ?> "
@@ -35,8 +38,8 @@
                     </div>
                 </div>
             <?php } ?>
-            <div class="col-lg-6 justify-content-x">
-                <div class="card border-left-primary shadow h-100 py-2">
+            <div class="col-lg-6 justify-content-x mt-5 mb-4">
+                <div class="card border-left-primary shadow h-100 py-2 mt-5">
                     <div class="card-body">
                         <div class="row no-gutters align-items-center">
                             <h5 class="text-center">Total Review</h5>
@@ -62,7 +65,7 @@
 
 <!-- isi review -->
 <div class="container">
-    <h3 class="mt-5">Review dan ulasan anda</h3>
+    <h3 class="mt-5 ms-3">Review dan ulasan anda</h3>
     <tbody>
         <section id="cars">
             <div class="row cars-container" data-aos="zoom-in" data-aos-duration="1000">
