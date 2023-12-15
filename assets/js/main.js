@@ -33,7 +33,6 @@ buttonFilterGroup.forEach((button) => {
   })
 });
 
-console.log("hello");
 
 function countWords() {
   // Mendapatkan nilai teks dari textarea
@@ -55,3 +54,4 @@ function countWords() {
       submitButton.disabled = false;
   }
 }
+

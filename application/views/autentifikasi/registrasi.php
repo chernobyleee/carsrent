@@ -6,6 +6,8 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>CarsRent</title>
     <!-- BOOTSTRAP -->
+    <link rel="icon" href="<?= base_url('assets/img/carsrent.png') ?>">
+
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet"
         integrity="sha384-9ndCyUaIbzAi2FUVXJi0CjmCapSmO7SnpJef0486qhLnuZ2cdeRhO02iuK6FUUVM" crossorigin="anonymous">
     <!-- AOS -->
@@ -38,30 +40,40 @@
             </div>
             <div class="row align-items-center">
                 <div class="col-12">
-                <form class="registrasi" method="post" action="<?= base_url('autentifikasi/inputregister'); ?>">
+                <form class="registrasi" method="post" action="<?= base_url('autentifikasi/inputRegister'); ?>">
                         <div class="mb-3">
                             <label class="form-label">Nama Lengkap</label>
-                            <input type="text" class="form-control" placeholder="Masukan Nama Lengkap" name="nama" required>
+                            <input type="text" class="form-control" placeholder="Masukan Nama Lengkap" name="nama" id="nama">
+                            <?= form_error('nama', '<small class="text-danger pl-3">', '</small>'); ?>
+
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Username</label>
-                            <input type="text" class="form-control" placeholder="Masukan Username" name="username" required>
+                            <input type="text" class="form-control" placeholder="Masukan Username" name="username" id="username">
+                            <?= form_error('username', '<small class="text-danger pl-3">', '</small>'); ?>
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Email</label>
-                            <input type="email" class="form-control" placeholder="Masukan Email" name="email" required>
+                            <input type="email" class="form-control" placeholder="Masukan Email" name="email" id="email" >
+                            <?= form_error('email', '<small class="text-danger pl-3">', '</small>'); ?>
+
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Password</label>
-                            <input type="password" class="form-control" placeholder="Masukan password" name="password" required>
+                            <input type="password" class="form-control" placeholder="Masukan password" name="password"  id="password">
+                            <?= form_error('password', '<small class="text-danger pl-3">', '</small>'); ?>
+
                         </div>
                         <div class="mb-3">
                             <label class="form-label">Nomor Handphone</label>
-                            <input type="text" class="form-control" placeholder="Masukan Nomor Handphone" name="nohp" required>
+                            <input type="text" class="form-control" placeholder="Masukan Nomor Handphone" name="nohp"  id="nohp">
+                            <?= form_error('nohp', '<small class="text-danger pl-3">', '</small>'); ?>
+
                         </div>
                         
                         <div class="mb-3">
-                            <button class="btn-login">Register</button>
+                            <button class="btn-login" type="submit">Register</button>
+
                             <a class="btn-cancel mt-1" href="<?= base_url('home')?>">Back To Home</a>
                         </div>
                         <div class="mb-3 text-center">

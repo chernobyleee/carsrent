@@ -173,6 +173,10 @@ a {
         width: calc(var(--nav-width) + 156px);
     }
 
+    .modalpesan{
+        width: 100%;
+    }
+
 
     .body-pd {
         padding-left: calc(var(--nav-width) + 188px);

@@ -41,16 +41,18 @@ class Autentifikasi extends CI_Controller
     {
         if ($this->session->userdata('username')) {
             redirect('home/index');
+        } else {
+            $this->load->view('autentifikasi/registrasi');
+            $this->form_validation->set_rules(
+                'username',
+                'Username',
+                'required|trim|is_unique[user.username]',
+                [
+                    'required' => 'Username Belum diisi!!',
+                    'is_unique' => 'Username Sudah Terdaftar!'
+                ]
+            );
         }
-        else{
-        $this->load->view('autentifikasi/registrasi');
-        $this->form_validation->set_rules('username', 'Username',
-            'required|trim|is_unique[user.username]', [
-                'required' => 'Username Belum diisi!!',
-                'is_unique' => 'Username Sudah Terdaftar!'
-            ]);
-        }
-        
     }
     // ini sementara langsung ke form login password_hash('password', PASSWORD_DEFAULT)
     private function _login()
@@ -64,51 +66,94 @@ class Autentifikasi extends CI_Controller
             //cek password
             if (password_verify($password, $user['password'])) {
                 $data = [
-                    'username' => $user['username'],
-                    
+                    'username' => $user['username']
                 ];
                 $this->session->set_userdata($data);
                 if ($user['role'] == 1) {
                     redirect('admin');
                 } else {
-
                     redirect('home/index');
                 }
             } else {
-                $this->session->set_flashdata('pesan', '<div 
-class="alert alert-danger alert-message" role="alert">Password 
-salah!!</div>');
+                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Password salah!!</div>');
                 redirect('autentifikasi');
             }
 
-            $this->session->set_flashdata('pesan', '<div 
-class="alert alert-danger alert-message" role="alert">User belum 
-diaktifasi!!</div>');
-            redirect('autentifikasi');
         } else {
-            $this->session->set_flashdata('pesan', '<div 
-class="alert alert-danger alert-message" role="alert">Akun tidak 
-terdaftar!!</div>');
+            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Akun tidak terdaftar!!</div>');
             redirect('autentifikasi');
         }
+
+
+
     }
     //// controller dibawah untuk view dan input. yg diatas rencananya buat cek login
 
 
     public function inputRegister()
-    {   
-        $this->load->view('autentifikasi/registrasi');
-        $this->form_validation->set_rules('username', 'Username',
-            'required|trim|is_unique[user.username]', [
+    {
+        if ($this->session->userdata('username')) {
+            redirect('user');
+        }
+        $this->form_validation->set_rules(
+            'username',
+            'Username',
+            'required|trim|is_unique[user.username]',
+            [
                 'required' => 'Username Belum diisi!!',
                 'is_unique' => 'Username Sudah Terdaftar!'
-            ]);
-        if ($this->form_validation->run() == true) {
-            $nama = $this->input->post('nama') ? $this->input->post('nama') : null;
-            $username = $this->input->post('username') ? $this->input->post('username') : null;
-            $email = $this->input->post('email') ? $this->input->post('email') : null;
-            $password = password_hash($this->input->post('password') , PASSWORD_DEFAULT) ? password_hash($this->input->post('password'), PASSWORD_DEFAULT) : null;
-            $nohp = $this->input->post('nohp') ? $this->input->post('nohp') : null;
+            ]
+        );
+        $this->form_validation->set_rules(
+            'nama',
+            'Nama Lengkap',
+            'required',
+            [
+                'required' => 'Nama Belum diis!!'
+            ]
+        );
+        $this->form_validation->set_rules(
+            'email',
+            'Masukan Email',
+            'required',
+            [
+                'required' => 'Email Belum diis!!'
+            ]
+        );
+        $this->form_validation->set_rules(
+            'email',
+            'Masukan Email',
+            'required',
+            [
+                'required' => 'Email Belum diis!!'
+            ]
+        );
+        $this->form_validation->set_rules(
+            'password',
+            'Masukan password',
+            'required',
+            [
+                'required' => 'password Belum diis!!'
+            ]
+        );
+        $this->form_validation->set_rules(
+            'nohp',
+            'Masukan nohp',
+            'required',
+            [
+                'required' => 'nohp Belum diis!!'
+            ]
+        );
+        if ($this->form_validation->run() == false) {
+
+            $this->load->view('autentifikasi/registrasi');
+
+        } else {
+            $nama = $this->input->post('nama') ;
+            $username = $this->input->post('username');
+            $email = $this->input->post('email') ;
+            $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT) ;
+            $nohp = $this->input->post('nohp');
 
             $data = array(
                 'nama' => $nama,
@@ -120,11 +165,6 @@ terdaftar!!</div>');
 
             $this->db->insert('user', $data);
             redirect('autentifikasi');
-        }else{
-            $this->session->set_flashdata('pesan', '<div 
-                class="alert alert-danger alert-message" role="alert">Username 
-                sudah digunakan</div>');
-                redirect('autentifikasi/register');
         }
     }
     public function logout()

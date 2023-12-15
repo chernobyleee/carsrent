@@ -1,3 +1,26 @@
+<style>
+        html, body {
+            height: 100%;
+            margin: 0;
+            padding: 0;
+        }
+
+        #wrapper {
+            display: flex;
+            flex-direction: column;
+            min-height: 70vh;
+        }
+
+        #content {
+            flex: 1;
+        }
+
+        #footer {
+            flex-shrink: 0;
+        }
+    </style>
+
+
 <section id="breadcrumb">
     <div class="container">
         <div class="row">
@@ -7,6 +30,11 @@
         </div>
     </div>
 </section>
+
+<div id="wrapper">
+    <div id="content">
+
+
 
 <!-- start content -->
 <div class="container">
@@ -32,15 +60,17 @@ foreach ($tipe as $t) { ?>
                         foreach ($review as $r) 
                         { 
                             ?>
-                        <?php if ($r['is_active'] == 1) { ?>
+                        
                             <div class="col-xl-4 col-lg-4 col-md-4 col-4 mt-4 cars-item filter-<?= $r['tipe']; ?> min-height: 540px">
                                 <div class="card mb-3" style="max-width: 540px;">
                                     <div class="d-flex align-items-center mt-4">
-                                        <img src="<?= base_url('assets/img/profil/'.$r['gambar']) ?>" class="img-profile rounded-circle" style="object-fit: cover; margin-left: 20px; margin-right: 10px; width: 40px; height: 40px;">
+                                        <img src="<?= base_url('assets/img/profil/defaults.png') ?>" class="img-fluid rounded-start ms-4 pt-2" style="width: 40px;">
                                         <div>
-                                            <h5 class="card-title  pt-2"><?= $r['username']; ?></h5>
+                                            <h5 class="card-title  pt-2">
+                                                <?= $r['username']; ?>
+                                            </h5>
                                             <div class="position-relative">
-                                                <img src="<?= base_url('assets/img/star/star'). $r['rating']; ?>.png" class="img-fluid mx-auto d-block" style="width: 75px;">
+                                                <img src="<?= base_url('assets/img/star/star'). $r['rating']; ?>.png" class="img-fluid rounded-start position-absolute top-0 start-0" style="width: 50px;">
                                             </div>
                                         </div>
                                     </div>
@@ -62,7 +92,6 @@ foreach ($tipe as $t) { ?>
                                     </div>
                                 </div>
                             </div>
-                            <?php } ?>
 
                         <?php } ?>
             </tbody>
@@ -72,4 +101,6 @@ foreach ($tipe as $t) { ?>
 </div>
 </div>
 </div>
-</section>
+
+</div>
+</div>

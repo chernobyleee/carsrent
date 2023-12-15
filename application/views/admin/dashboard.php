@@ -104,25 +104,3 @@
             </div>
         </div>
         <!-- akhir row -->
-    <!-- gajadi di pake error mulu sidebarnya -->
-    
-    <!-- modal untuk isi massage yang panjang -->
-    <!-- <div class="modal fade" id="lihatSelengkapnyaModal" tabindex="-1" aria-labelledby="lihatSelengkapnyaModalLabel" aria-hidden="true">
-        <div class="modal-dialog modal-lg">
-            <div class="modal-content">
-                <div class="modal-header">
-                    <h5 class="modal-title" id="lihatSelengkapnyaModalLabel">Selengkapnya</h5>
-                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-            </div>
-            <div class="modal-body">
-                <p>
-                    Lorem ipsum dolor sit amet consectetur adipisicing elit. Facilis quidem maxime veniam placeat dolorum incidunt sint molestias laboriosam totam doloribus ut soluta, unde culpa facere, adipisci eligendi, sunt ratione cupiditate reprehenderit odio! Facere molestias voluptas esse explicabo laborum fugiat aliquid, adipisci iste? Facere quas odit quia perspiciatis dolorem dignissimos fuga magnam vitae laboriosam iure at, dolor qui quam natus esse necessitatibus in eveniet, ipsa soluta quos. Obcaecati perferendis iure animi beatae consequatur cupiditate nulla ea? Hic error obcaecati vitae rem possimus pariatur, praesentium exercitationem corrupti iste voluptatum, quas laudantium inventore. Quod delectus ducimus quaerat iusto nobis explicabo iste quam quos?
-                </p>
-            </div>
-            <div class="modal-footer">
-                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Tutup</button>
-            </div>
-        </div>
-    </div>
-    </div> -->
-    <!-- akhir modal -->

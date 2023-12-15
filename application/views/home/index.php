@@ -3,7 +3,7 @@
 <section id="hero" class="d-flex align-items-center">
     <div class="container">
         <div class="row">
-            <div class="col-lg-6 col-12 d-flex flex-column justify-content-center text-center text-lg-start btn-pr" data-aos="fade-up" data-aos-duration="1000">
+            <div class="col-lg-6 col-12 d-flex flex-column justify-content-center text-lg-start btn-pr" data-aos="fade-up" data-aos-duration="1000">
                 <h1 class="fw-bold">CarsRent</h1>
                 <h2>Temukan kebebasan menjelajahi perjalanan dengan kualitas terbaik melalui layanan istimewa kami
                 </h2>

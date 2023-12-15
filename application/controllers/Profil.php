@@ -18,7 +18,7 @@ class Profil extends CI_Controller
             $data['user'] = $this->ModelUser->getInfo();
             $this->load->view('templates/login_header',$user);
             $this->load->view('user/profile', $data);
-            $this->load->view('templates/footer');
+            $this->load->view('admin/footer_admin');
             
 
         } else {

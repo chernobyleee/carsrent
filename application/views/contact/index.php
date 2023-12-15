@@ -1,9 +1,13 @@
+<style>
+        #wordCountMessage {
+            color: red;
+        }
+</style>
+
 <section id="breadcrumb">
     <div class="container">
         <div class="row">
             <nav aria-label="breadcrumb">
-
-                <h3>Contact</h3>
             </nav>
         </div>
     </div>
@@ -57,19 +61,20 @@
                         <form class="form" method="post" action="<?= base_url('contact/inputcontact'); ?>">
                             <div class="col-10">
                                 <label class="form-label">Your Name :</label>
-                                <input type="text" class="form-control" name="nama" id="nama" required>
+                                <input type="text" class="form-control" name="nama" id="nama">
                             </div>
                             <div class="col-10">
                                 <label class="form-label">Your Email :</label>
                                 <input type="email" class="form-control" name="email" id="email" required>
                             </div>
                             <div class="col-10">
-                                <label class="form-label">Subject :</label>
-                                <input type="text" class="form-control" name="subject" id="nama" required>
+                                <label class="form-label" for="textInput">Subject :</label>
+                                <input type="text" class="form-control" name="subject" id="textInput" oninput="countWords()" maxlength="15">
+                                <p id="wordCountMessage"></p>
                             </div>
-                            <div class="col-10">
+                            <div class="col-10 mb-3">
                                 <label class="form-label">Message :</label>
-                                <textarea rows="5" class="form-control" name="message" id="nama" required></textarea>
+                                <textarea rows="5" class="form-control" name="message" id="message"></textarea>
                             </div>
                             <div class="col-10 d-flex justify-content-center">
                                 <button type="submit" class="form-control" id="form-submit">Send Message</button>
@@ -82,3 +87,4 @@
         </div>
     </div>
 </section>
+

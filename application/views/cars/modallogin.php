@@ -38,7 +38,7 @@
                     <textarea rows="3" class="form-control" name='review' id="review" maxlength="128"></textarea>
 
 
-                    <button type="submit" value="submit" class="form-control" id="form-submit">Kirim Review</button>
+                    <button type="submit" value="submit" class="form-control mt-3" id="form-submit">Kirim Review</button>
 
                 </form>
             </div>
