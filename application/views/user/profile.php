@@ -27,6 +27,11 @@
 <div id="wrapper">
     <div id="content">
 
+        <!-- halaman profil -->
+
+
+
+
         <div class="container">
             <div class="container-fluid">
                 <div class="row ">
@@ -110,10 +115,12 @@
                                                 </p>
                                                 <div class="d-flex justify-content-center gap-2">
                                                     <!-- hapus review -->
-                                                    <button type="button" class="btn btn-danger btn-sm" onclick="return confirm('Kamu yakin akan menghapus ?')">
-                                                        <i class="bi bi-trash"></i>
-                                                    </button>
-
+                                                    <form action="profil/delReview" method="post">
+                                                        <input type="hidden" value="<?= $r->id_review; ?>" name="id_review">
+                                                        <button type="submit" value="submit" class="btn btn-danger btn-sm" onclick="return confirm('Kamu yakin akan menghapus ?')">
+                                                            <i class="bi bi-trash"></i>
+                                                        </button>
+                                                    </form>
                                                     <?php $reviewmodal = $r->massage;
                                                     $carsmodal = $r->nama;
                                                     $reviewmodal1 = $r->massage;
@@ -174,8 +181,6 @@
                                             <input type="text" class="form-control" id="nohp" name="nohp" value="<?= $user['nohp'] ?>">
                                         </div>
                                     </div>
-
-
                                     <div class="form-group row">
                                         <div class="col-sm-3">Gambar</div>
                                         <div class="col-sm-8">
@@ -185,8 +190,8 @@
                                                 </div>
                                                 <div class="col-sm-12">
                                                     <div class="custom-file">
-                                                        <input type="file" class="custom-file-input" id="gambar" name="gambar">
-                                                        <label class="custom-file-label" for="gambar">Pilih file</label>
+                                                        <label for="formFile" class="form-label"></label>
+                                                        <input class="form-control" type="file" id="gambar" name="gambar">
                                                     </div>
                                                 </div>
                                             </div>
@@ -195,60 +200,59 @@
                                     <div class="form-group row justify-content-end">
                                         <div class="col-sm-12 d-flex justify-content-end gap-2">
                                             <button type="submit" value="submit" class="btn btn-primary">Ubah</button>
-                                            <button class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
+
+                                            <button type="button" value="Cancel" class="btn btn-dark" data-bs-dismiss="modal" aria-label="Close">
                                                 Kembali</button>
-                                        </div>
-                                    </div>
                                 </form>
                             </div>
                         </div>
 
-                        <!-- akhir isi -->
                     </div>
                 </div>
             </div>
         </div>
-
-
-
-        <!-- Modal ubah review -->
-        <div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
-            <div class="modal-dialog">
-                <div class="modal-content">
-                    <div class="modal-header">
-                        <h1 class="modal-title fs-5" id="exampleModalLabel">Edit review</h1>
-                        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                    </div>
-                    <div class="modal-body">
-                        <form class="review" method="post" action="<?= base_url('Profil/EditReview'); ?>">
-                            <label class="form-label">Mobil:</label>
-                            <input type="text" class="form-control" name="mobil_modal" id="carsmodal" readonly><br>
-                            <label class="form-label">Rating:</label><br>
-                            <div class="rate">
-                                <input type="radio" id="star5" name="rating" value="5" />
-                                <label for="star5" title="text">5 stars</label>
-                                <input type="radio" id="star4" name="rating" value="4" />
-                                <label for="star4" title="text">4 stars</label>
-                                <input type="radio" id="star3" name="rating" value="3" />
-                                <label for="star3" title="text">3 stars</label>
-                                <input type="radio" id="star2" name="rating" value="2" />
-                                <label for="star2" title="text">2 stars</label>
-                                <input type="radio" id="star1" name="rating" value="1" />
-                                <label for="star1" title="text">1 star</label>
-                            </div><br><br>
-                            <input type="hidden" class="form-control" name="reviewmodal" id="reviewmodal" readonly>
-                            <label class="form-label">Review:</label>
-                            <textarea rows="5" class="form-control" name='review' id="reviewmodal1"></textarea>
-                    </div>
-                    <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
-                        <button type="submit" value="submit" class="btn btn-primary">Save changes</button>
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-
     </div>
+</div>
+
+
+
+<!-- Modal ubah review -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h1 class="modal-title fs-5" id="exampleModalLabel">Edit review</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+            </div>
+            <div class="modal-body">
+                <form class="review" method="post" action="<?= base_url('Profil/EditReview'); ?>">
+                    <label class="form-label">Mobil:</label>
+                    <input type="text" class="form-control" name="mobil_modal" id="carsmodal" readonly><br>
+                    <label class="form-label">Rating:</label><br>
+                    <div class="rate">
+                        <input type="radio" id="star5" name="rating" value="5" />
+                        <label for="star5" title="text">5 stars</label>
+                        <input type="radio" id="star4" name="rating" value="4" />
+                        <label for="star4" title="text">4 stars</label>
+                        <input type="radio" id="star3" name="rating" value="3" />
+                        <label for="star3" title="text">3 stars</label>
+                        <input type="radio" id="star2" name="rating" value="2" />
+                        <label for="star2" title="text">2 stars</label>
+                        <input type="radio" id="star1" name="rating" value="1" />
+                        <label for="star1" title="text">1 star</label>
+                    </div><br><br>
+                    <input type="hidden" class="form-control" name="reviewmodal" id="reviewmodal" readonly>
+                    <label class="form-label">Review:</label>
+                    <textarea rows="5" class="form-control" name='review' id="reviewmodal1"></textarea>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                <button type="submit" value="submit" class="btn btn-primary">Save changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+</div>
 </div>

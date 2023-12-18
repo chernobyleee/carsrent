@@ -1,11 +1,14 @@
 <?php
-class Review extends CI_Controller {
-    public function __construct() {
+class Review extends CI_Controller
+{
+    public function __construct()
+    {
         parent::__construct();
 
         $this->load->model('ModelCars');
     }
-    public function index() {
+    public function index()
+    {
         if ($this->session->userdata('username')) {
             $user = $this->ModelUser->cekData(['username' => $this->session->userdata('username')])->row_array();
             $user['user'] = $user;
@@ -16,13 +19,9 @@ class Review extends CI_Controller {
 
         $data['review'] = $this->ModelCars->getReview();
         $data['tipe'] = $this->ModelCars->getTipe();
-    
+
 
         $this->load->view('review/index', $data);
         $this->load->view('templates/footer');
     }
-    
 }
-
-
-     

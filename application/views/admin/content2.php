@@ -48,7 +48,7 @@
                                     <div class="modal fade modalpesan" id="linkMassage<?= $i ?>" tabindex="1000" aria-labelledby="linkMassage<?= $i ?>" aria-hidden="true">
                                         <div class="modal-dialog modal-dialog-centered">
                                             <div class="modal-content bg-info text-white">
-                                                <div class="modal-header">
+                                                <div class="modal-header bg-danger">
                                                     <h1 class="modal-title fs-5" id="linkMassage<?= $i ?>">pesan lengkap</h1>
                                                     <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                                                 </div>

@@ -17,10 +17,9 @@ class Home extends CI_Controller
         } else {
             $this->load->view('templates/header');
         }
-        $data['review'] = $this->ModelCars->getReview();
+        $data['review'] = $this->ModelCars->getReviewHome();
 
         $this->load->view('home/index', $data);
         $this->load->view('templates/footer');
     }
-
 }

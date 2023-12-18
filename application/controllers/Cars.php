@@ -23,6 +23,7 @@ class Cars extends CI_Controller
             $this->load->view('cars/modallogin');
             $this->load->view('templates/footer');
         } else {
+            $data['user'] = ['role'=>0];
             $data['cars'] = $this->ModelCars->getcars('tipe.id_tipe');
             $data['tipe'] = $this->ModelCars->getTipe();
             $data['ratings'] = $this->ModelCars->getallratings();
@@ -40,7 +41,7 @@ class Cars extends CI_Controller
         
         $id_user = $this->ModelUser->getinfo();
         $id_mobil = $this->input->post('id_modal') ? $this->input->post('id_modal') : null;
-        $review = $this->input->post('review') ? $this->input->post('review') : '        ';
+        $review = $this->input->post('review') ? $this->input->post('review') : '';
         $rating = $this->input->post('rating') ? $this->input->post('rating') : 0;
 
         $data = array(

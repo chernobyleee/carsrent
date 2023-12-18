@@ -35,12 +35,9 @@ class Admin extends CI_Controller
             } else {
                 redirect('home');
             }
-
         } else {
             redirect('home');
         }
-
-
     }
     public function accReview()
     {
@@ -62,7 +59,7 @@ class Admin extends CI_Controller
     }
     public function delMobil()
     {
-        $id_mobil = $this->input->post('id_mobil') ? $this->input->post('id_mobil') : null;
+        $id_mobil = $this->input->post('id_mobil');
         $this->ModelCars->deleteMobil($id_mobil);
         redirect('admin#hapusdata');
     }
@@ -101,7 +98,7 @@ class Admin extends CI_Controller
         if (!empty($harga)) {
             $dataToUpdate['harga'] = $harga;
         }
-        
+
         if (!empty($_FILES['gambar']['name'])) {
             $config['upload_path'] = './assets/img/cars/';
             $config['allowed_types'] = 'gif|jpg|png';
@@ -119,10 +116,7 @@ class Admin extends CI_Controller
                 $upload_error = $this->upload->display_errors();
                 echo $upload_error;
             }
-        
-        }
-        else{
-            
+        } else {
         }
         if (!empty($dataToUpdate)) {
             $this->db->insert('mobil', $dataToUpdate);

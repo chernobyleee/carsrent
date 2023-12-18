@@ -66,26 +66,33 @@ class Autentifikasi extends CI_Controller
             //cek password
             if (password_verify($password, $user['password'])) {
                 $data = [
-                    'username' => $user['username']
+                    'username' => $user['username'],
+
                 ];
                 $this->session->set_userdata($data);
                 if ($user['role'] == 1) {
                     redirect('admin');
                 } else {
+
                     redirect('home/index');
                 }
             } else {
-                $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Password salah!!</div>');
+                $this->session->set_flashdata('pesan', '<div 
+class="alert alert-danger alert-message" role="alert">Password 
+salah!!</div>');
                 redirect('autentifikasi');
             }
 
+            $this->session->set_flashdata('pesan', '<div 
+class="alert alert-danger alert-message" role="alert">User belum 
+diaktifasi!!</div>');
+            redirect('autentifikasi');
         } else {
-            $this->session->set_flashdata('pesan', '<div class="alert alert-danger alert-message" role="alert">Akun tidak terdaftar!!</div>');
+            $this->session->set_flashdata('pesan', '<div 
+class="alert alert-danger alert-message" role="alert">Akun tidak 
+terdaftar!!</div>');
             redirect('autentifikasi');
         }
-
-
-
     }
     //// controller dibawah untuk view dan input. yg diatas rencananya buat cek login
 
@@ -121,14 +128,6 @@ class Autentifikasi extends CI_Controller
             ]
         );
         $this->form_validation->set_rules(
-            'email',
-            'Masukan Email',
-            'required',
-            [
-                'required' => 'Email Belum diis!!'
-            ]
-        );
-        $this->form_validation->set_rules(
             'password',
             'Masukan password',
             'required',
@@ -147,12 +146,11 @@ class Autentifikasi extends CI_Controller
         if ($this->form_validation->run() == false) {
 
             $this->load->view('autentifikasi/registrasi');
-
         } else {
-            $nama = $this->input->post('nama') ;
+            $nama = $this->input->post('nama');
             $username = $this->input->post('username');
-            $email = $this->input->post('email') ;
-            $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT) ;
+            $email = $this->input->post('email');
+            $password = password_hash($this->input->post('password'), PASSWORD_DEFAULT);
             $nohp = $this->input->post('nohp');
 
             $data = array(

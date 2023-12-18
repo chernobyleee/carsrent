@@ -30,8 +30,7 @@
                         <label for="star2" title="text">2 stars</label>
                         <input type="radio" id="star1" name="rating" value="1" />
                         <label for="star1" title="text">1 star</label>
-                        <input type="radio" id="star0" name="rating" value="0" />
-                        <label for="star0" title="text">0 star</label>
+                        
                     </div>
                     <br><br>
                     <label class="form-label">Review:</label>

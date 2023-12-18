@@ -58,9 +58,9 @@ foreach ($tipe as $t) { ?>
                         <?php
                         
                         foreach ($review as $r) 
-                        { 
+                        {  if ($r['is_active']==1){
                             ?>
-                        
+                            
                             <div class="col-xl-4 col-lg-4 col-md-4 col-4 mt-4 cars-item filter-<?= $r['tipe']; ?> min-height: 540px">
                                 <div class="card mb-3" style="max-width: 540px;">
                                     <div class="d-flex align-items-center mt-4">
@@ -93,6 +93,7 @@ foreach ($tipe as $t) { ?>
                                 </div>
                             </div>
 
+                        <?php } ?>
                         <?php } ?>
             </tbody>
         </div>

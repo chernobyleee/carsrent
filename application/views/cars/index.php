@@ -132,10 +132,9 @@ $data = gettAllDataRating($cars, $ratings);
                                 <img src="<?= base_url('assets/img/star/star' . round($dataReview[0]) . '.png') ?>" alt="" style="width: 100px;" class="img-fluid rounded mx-auto d-block mb-3">
                                 <div class="cars-img">
                                     <img src="<?= base_url('assets/img/cars/') . $r->gambar; ?>" alt="" class="img-fluid">
-
                                 </div>
-                                <h6 class="text-center ">rating <?= round(($dataReview[0]), 1); ?></h6>
-                                <p class="fst-italic fs-7 text-center"><?= $dataReview[1] ?> orang telah mereview</p>
+                                <h6 class="text-center mt-3">rating <?= round(($dataReview[0]), 1); ?></h6>
+                                <p class="fst-italic fs-7 text-center text-muted"><?= $dataReview[1] ?> orang telah mereview</p>
                                 <hr>
                                 <div class="cars-info">
                                     <h4>
@@ -163,12 +162,14 @@ $data = gettAllDataRating($cars, $ratings);
                                     ?>
 
 
-                                    <div class="d-grid gap-2 col mx-auto">
-                                        <button class="btn-hero align-center" data-bs-toggle="modal" data-bs-target="#pesan">Pesan</button>
-                                        <button type="button" class="btn-hero" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="prepareReviewForm('<?= $mobilModal; ?>','<?= $id_modal; ?>')">
-                                            Review
-                                        </button>
-                                    </div>
+                                    <?php if ($user['role'] != 1) { ?>
+                                        <div class="d-grid gap-2 col mx-auto">
+                                            <button class="btn-hero align-center" data-bs-toggle="modal" data-bs-target="#pesan">Pesan</button>
+                                            <button type="button" class="btn-hero" data-bs-toggle="modal" data-bs-target="#exampleModal" onclick="prepareReviewForm('<?= $mobilModal; ?>','<?= $id_modal; ?>')">
+                                                Review
+                                            </button>
+                                        </div>
+                                    <?php } ?>
 
                                 </div>
                             </div>

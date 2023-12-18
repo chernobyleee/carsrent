@@ -62,22 +62,23 @@
             <!-- ini isinya review dari user -->
             <!-- foreach(array_slice($section['Article'], 0, 3) as $article ):-->
             <?php
-            foreach(array_slice($review, 0, 3) as $r ){
+            foreach (array_slice($review, 0, 3) as $r) {
+
             ?>
-                <div class="col-md-6 col-lg-4 col-12 mb-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-duration="1000" >
-                    <div class="card testimonial-card"style="width: 1000px;">
+                <div class="col-md-6 col-lg-4 col-12 mb-4 d-flex align-items-stretch" data-aos="zoom-in" data-aos-duration="1000">
+                    <div class="card testimonial-card" style="width: 1000px;">
                         <div class="card-up"></div>
                         <div class="avatar mx-auto bg-white">
-                            <img src="<?= base_url('assets/img/profil/defaults.png') ?>" class="rounded-circle img-fluid" />
+                            <img src="<?= base_url('assets/img/profil/') . $r['gambar']; ?>" class="rounded-circle img-fluid" />
                         </div>
                         <div class="card-body">
 
                             <!-- nama user -->
                             <h4 class="mb-4"><?= $r['username']; ?></h4>
                             <hr />
-                            <div class="position-relative "style="left:100px">
-                                <img src="<?= base_url('assets/img/star/star'). $r['rating']; ?>.png" class="img-fluid rounded-start position-absolute top-0 start-0" style="width: 100px;">
-                            </div>                        
+                            <div class="position-relative " style="left:100px">
+                                <img src="<?= base_url('assets/img/star/star') . $r['rating']; ?>.png" class="img-fluid rounded-start position-absolute top-0 start-0" style="width: 100px;">
+                            </div>
                             <br>
                             <p class="dark-grey-text mt-4">
 
